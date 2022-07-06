@@ -44,7 +44,7 @@ var httpFileUpload = {
     console.log("file===>>" , file);
     if(!file){
         console.log("파일 안들어옴!!!!");
-        alert("file not exists");
+        alert("이미지를 반드시 선택해주세요");
         throw new Error("file not exists");
     }
   
