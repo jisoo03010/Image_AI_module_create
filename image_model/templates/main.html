@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="../static/common.css">
     <link rel="stylesheet" href="">
     <script>
-        // var someJavaScriptVar = '{{value}}'
-        // console.log(someJavaScriptVar);
+        var someJavaScriptVar = '{{running_data}}'
+        console.log(someJavaScriptVar);
         function uploadStartFront(){
             httpFileUpload.uploadStart((returnData)=>{
                 if(returnData.result_cd == "1"){
@@ -29,7 +29,7 @@
 <body>
     <script type="text/javascript">
     </script>
-    <form action="/upload" method="post" id="frm" name="frm" enctype="multipart/form-data">
+    <form action="" method="post" id="frm" name="frm" enctype="multipart/form-data">
         <div class="container">
             <header>
                 <div id="logo">
@@ -62,17 +62,18 @@
                         <div  class="blink" ></div>
                             <div>
                                 <img src="../static/image/undraw_image__folder_re_hgp7.svg" alt="" id="img_input_icon">
-                                <input type="file" name="file_lo"  id="hidden_input_file" onchange="setThumbnail(event);"accept="image/*" required multiple>
+                                <input type="file" name="file_lo"  id="hidden_input_file" onchange="setThumbnail(event);"accept="image/*" required>
                             </div>
                         </div>
                         <div class="output_image_box">
                             <img src="../static/image/undraw_not_found_re_x4in.svg" alt="" id="img_loading_icon">
                         </div>
                     </div>
-                    <button id="ajaxCall"  onclick="javascript:uploadStartFront();">호출</button>
+                    <button id="ajaxCall" type="button" >호출</button>
                     <br>
                     <br>
                 </div>
+                <p id="running_data"></p>
             </section>
             <footer>
                 <p>KOREA &copy; DATACENTRIC OFFICE IN IMAGE MACHINE LEARNNING PROJECT </p>
