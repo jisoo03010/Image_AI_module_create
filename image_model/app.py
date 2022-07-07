@@ -49,11 +49,10 @@ test_dir = os.path.join(data_dir, 'val')
 @app.route("/upload", methods=['POST'])
 def upload():
     file_upload = request.files['file_lo'] # 받아온 파일 
-    predict(file_upload)
-    jsonify({ 0 : "eum_data",  1: 'ma_data', 2: 'son_data'})
-    for p in pred:
-        predd = '{:.4f}% : eum_data, \n{:.4f}% : ma_data, \n{:.4f}% : son_data'.format(p[0]*100, p[1]*100, p[2]*100)
-    return render_template("view.html", acc = predd )
+    pp = predict(file_upload)
+    for p in pp:
+        predd = {"eum_data" : "{:.4f}%".format(p[0]*100), "ma_data" : "{:.4f}%".format(p[1]*100), "son_data" : "{:.4f}%".format(p[2]*100)}
+    return jsonify(predd)
 
 def predict(image_bytes):
     data_transforms = transforms.Compose([transforms.Resize((230, 230)),
@@ -65,7 +64,6 @@ def predict(image_bytes):
     image = image.to(device)
     image = image.reshape(1, 3, 224, 224)
     print("image=>>>", image) # tensor로 변환함 
-    global pred
     pred = model(image)
     #softmax(1) shape을 다 합쳤을때 1이 안되서 소프트맥스를 사용해서 1을 만들어 준뒤에 
     pred = F.softmax(pred)
@@ -75,7 +73,6 @@ def predict(image_bytes):
         print(pred.argmax(1),"번")
     #max값 구하기 
     # 몇 번째 인덱스에 몇 퍼센트인지 수치상으로 보여주기 
-   
     return pred
 
 #js에서 받은 파일 을 받아와서 tensor로 변환시켜주고 업로드 하면 끝남 
