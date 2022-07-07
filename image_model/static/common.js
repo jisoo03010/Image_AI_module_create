@@ -28,61 +28,37 @@ function setThumbnail(event) {
     img.style.width = 95+"%"
     img.style.height = 350+"px"
     img.style.transform = "translate("+-50+"%," + -50+ "%)"
-    
-   
+
   }
 
   reader.readAsDataURL(event.target.files[0]);
 }
-//var httpRequest;
 
-var httpFileUpload = {
+//async, await => 비동기 처리
+//promise 객체 => 
+//collback => 값이 끝났을 때 받는 거
+//음식점 에약 이랑 비슷함 => 예약 전화 
 
-  uploadStart : function (callback){
 
-    let file = hidden_input_file.files[0]
-    console.log("file===>>" , file);
-    if(!file){
-        console.log("파일 안들어옴!!!!");
-        alert("이미지를 반드시 선택해주세요");
-        throw new Error("file not exists");
-    }
-  
-    let form = new FormData();
-    form.append("file_lo", file);
-    
-    for (var key of form.keys()) {
-      console.log("key=>>" , key);
-    }
-    
-    for (var value of form.values()) {
-      console.log("value=>>>" , value);
-    }
-    let returnObj = new Object();
-
-    let xhr = new XMLHttpRequest();
-    xhr.responseType = 'json'
-
-    xhr.onreadystatechange  = function(){
-      console.log(xhr.status);
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log(xhr.response);
-          console.log("uploaded!");
-        } else if(xhr.status == 404){
-          console.log("404");
-          returnObj.result_cd = "404";
-          callback(returnObj);
-        } 
-      //else {
-      //  console.log("not 201 404");
-      //  callback(returnObj);
-      //  returnObj.result_cd = "0";
-      //}
-      //callback(returnObj);
-    };
-    xhr.open('POST',  "/upload");
-    xhr.send();
-
-  }
+async function _post(path,bodyData={}){
+  const data = await fetch(path,{
+      method:'POST',
+      body:bodyData
+  }).then( res => res.json() );
+  return data;
 }
+
+let $ajaxCall = document.querySelector("#ajaxCall");
+$ajaxCall.addEventListener("click", async () => {
+  let $form = document.frm;
+  const fData = new FormData();
+  fData.append("file_lo", $form[0].files[0]);
+  console.log(" $form[0]==>",  $form[0].files[0])
+  let rdata = document.querySelector("#running_data")
+  rvalue = await _post('/upload', fData)
+
+  rdata.innerHTML = rvalue['eum_data']
+  console.log(rvalue)
+})
+
 
