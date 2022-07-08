@@ -13,8 +13,8 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 from torchvision import  utils
 import torchvision.datasets as datasets
-# import splitfolders
-import torch.nn.functional as F       
+import splitfolders
+import torch.nn.functional as F
 #모델 가져오기
 # model.load_state_dict(torch.load('model.pt'))
 
@@ -48,10 +48,10 @@ test_dir = os.path.join(data_dir, 'val')
 
 @app.route("/upload", methods=['POST'])
 def upload():
-    file_upload = request.files['file_lo'] # 받아온 파일
+    file_upload = request.files['file_lo'] # 받아온 파일 
     pp = predict(file_upload)
     for p in pp:
-        predd = {"eum_data" : "{:.4f}%".format(p[0]*100), "ma_data" : "{:.4f}%".format(p[1]*100), "son_data" : "{:.4f}%".format(p[2]*100)}
+        predd = {"eum_data" : "{:.4f}%".format(p[0]*100), "ma_data" : "{:.4f}%".format(p[1]*100), "son_data" : "{:.4f}%".format(p[2]*100), "max_data" : "{}".format(pp.argmax(1).item() )}
     return jsonify(predd)
 
 def predict(image_bytes):
@@ -92,7 +92,6 @@ def hello():
 @app.route('/main', methods=['GET', 'POST'])
 def main():
     value = 'fdsadfdsf, python'
-    
     return render_template("main.html", value = value)
 
 
