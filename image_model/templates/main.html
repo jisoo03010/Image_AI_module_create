@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="../static/common.css">
     <link rel="stylesheet" href="">
     <script>
-        var someJavaScriptVar = '{{running_data}}'
-        console.log(someJavaScriptVar);
+        // var someJavaScriptVar = '{{value}}'
+        // console.log(someJavaScriptVar);
         function uploadStartFront(){
             httpFileUpload.uploadStart((returnData)=>{
                 if(returnData.result_cd == "1"){
@@ -29,7 +29,7 @@
 <body>
     <script type="text/javascript">
     </script>
-    <form action="" method="post" id="frm" name="frm" enctype="multipart/form-data">
+    <form action="/upload" method="post" id="frm" name="frm" enctype="multipart/form-data">
         <div class="container">
             <header>
                 <div id="logo">
@@ -62,18 +62,28 @@
                         <div  class="blink" ></div>
                             <div>
                                 <img src="../static/image/undraw_image__folder_re_hgp7.svg" alt="" id="img_input_icon">
-                                <input type="file" name="file_lo"  id="hidden_input_file" onchange="setThumbnail(event);"accept="image/*" required>
+                                <input type="file" name="file_lo"  id="hidden_input_file" onchange="setThumbnail(event);"accept="image/*" required multiple>
                             </div>
                         </div>
                         <div class="output_image_box">
                             <img src="../static/image/undraw_not_found_re_x4in.svg" alt="" id="img_loading_icon">
                         </div>
                     </div>
-                    <button id="ajaxCall" type="button" >호출</button>
+                    <div class="flex1">
+                        <div id="result_box">
+                            <h3>결과 값 </h3><br><br>
+                            <p id="ma"></p>
+                            <p id="eum"></p>
+                            <p id="son"></p>
+                            <br>
+                            <p id="toial_max"></p>
+                        </div>
+                    </div>
+                    <button id="ajaxCall" type="button">호출</button>
                     <br>
                     <br>
+                   
                 </div>
-                <p id="running_data"></p>
             </section>
             <footer>
                 <p>KOREA &copy; DATACENTRIC OFFICE IN IMAGE MACHINE LEARNNING PROJECT </p>
