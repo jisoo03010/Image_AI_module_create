@@ -34,12 +34,12 @@ p{font-size: 20px;}
 /* output img icon  */
 .output_image_box{position: relative; top: 0;}
 #img_loading_icon{position: absolute; width: 70%; height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%);}
-
+.output_image_box> img{width: 60%;}
 /* go -> button design */
 #ajaxCall{width: 130px; height: 44px; background-color: #82aeff; color: white; font-size: 16px; font-weight: bold; border: 1px solid  #82aeff; border-radius: 100px; box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.253); float: right; margin: 50px 0px; cursor: pointer;}
 
 
-.blink{z-index: 999; position: absolute; top: 0px; left: 0px; border-radius: 23px; width: 99.5%; height: 387px; border: 2px solid rgb(34 252 145);}
+.blink{z-index: 9; position: absolute; top: 0px; left: 0px; border-radius: 23px; width: 99.5%; height: 387px; border: 2px solid rgb(34 252 145);}
 @keyframes blink-effect {
     50% {
       opacity: 0;
@@ -52,7 +52,9 @@ p{font-size: 20px;}
 
 
 
-
+/* 결과 값 보내는 컨텐츠 */
+.flex1{display: flex; justify-content: space-around;}
+#result_box{width: 500px; height: 200px; font-size: 16px; padding: 13px; background-color: white; border-radius:  18px ; box-shadow: 10px 10px 9px 0px rgba(0, 0, 0, 0.119);   margin-top: 50px;}
 
 
 

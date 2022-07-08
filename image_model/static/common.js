@@ -28,16 +28,13 @@ function setThumbnail(event) {
     img.style.width = 95+"%"
     img.style.height = 350+"px"
     img.style.transform = "translate("+-50+"%," + -50+ "%)"
-
+    
+   
   }
 
   reader.readAsDataURL(event.target.files[0]);
 }
-
-//async, await => 비동기 처리
-//promise 객체 => 
-//collback => 값이 끝났을 때 받는 거
-//음식점 에약 이랑 비슷함 => 예약 전화 
+//var httpRequest;
 
 
 async function _post(path,bodyData={}){
@@ -54,11 +51,23 @@ $ajaxCall.addEventListener("click", async () => {
   const fData = new FormData();
   fData.append("file_lo", $form[0].files[0]);
   console.log(" $form[0]==>",  $form[0].files[0])
-  let rdata = document.querySelector("#running_data")
+  let ma = document.querySelector("#ma")
+  let eum = document.querySelector("#eum")
+  let son = document.querySelector("#son")
+  let toial_max = document.querySelector("#toial_max")
   rvalue = await _post('/upload', fData)
 
-  rdata.innerHTML = rvalue['eum_data']
+  ma.innerHTML = "마동석 : " + rvalue['ma_data'] +"\n"
+  eum.innerHTML = "음문석 : " +  rvalue['eum_data'] +"\n"
+  son.innerHTML = "손석구 : " +rvalue['son_data']  +"\n"
+  if(rvalue['max_data'] === "0"){
+    toial_max.innerHTML = "\n이미지의 사람은 음문석 입니다.\n"
+  }else if(rvalue['max_data'] === "1"){
+    toial_max.innerHTML = "\n이미지의 사람은 마동석 입니다.\n"
+  }else if(rvalue['max_data'] === "2"){
+    toial_max.innerHTML = "\n이미지의 사람은 손석구 입니다.\n"
+  }
+  console.log("결과 값=====================");
+  console.log(rvalue['max_data'] === "0");
   console.log(rvalue)
 })
-
-
