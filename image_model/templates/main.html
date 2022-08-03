@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
-    <link rel="stylesheet" href="../static/common.css">
-    <link rel="stylesheet" href="">
+    <title>main</title><link rel="stylesheet" href="../static/common.css"><link rel="stylesheet" href="">
     <script>
         // var someJavaScriptVar = '{{value}}'
         // console.log(someJavaScriptVar);
-        function uploadStartFront(){
-            httpFileUpload.uploadStart((returnData)=>{
-                if(returnData.result_cd == "1"){
-                    console.log("업로드 성공");
-                } else {
-                    if(typeof returnData.result_msg !== "undefined"){
-                        console.log("업로드 실패 " + "[" + returnData.result_cd + "]");
-                    } else {
-                        console.log("업로드 실패 " + "[" + returnData.result_cd + ":" + returnData.result_msg +"]");
-                    }
-                }
-        console.log(returnData);
-    });
-}
-    </script>
+        function uploadStartFront(){httpFileUpload.uploadStart((returnData)=>{if(returnData.result_cd == "1"){console.log("업로드 성공");} else {if(typeof returnData.result_msg !== "undefined"){console.log("업로드 실패 " + "[" + returnData.result_cd + "]");
+                    } else {console.log("업로드 실패 " + "[" + returnData.result_cd + ":" + returnData.result_msg +"]");
+                    }}console.log(returnData);});}</script>
 </head>
 <body>
     <script type="text/javascript">
@@ -32,11 +14,7 @@
     <form action="/upload" method="post" id="frm" name="frm" enctype="multipart/form-data">
         <div class="container">
             <header>
-                <div id="logo">
-                    <a href="#">
-                        IMAGE MACHINE
-                    </a>
-                </div>
+                <div id="logo"><a href="#">IMAGE MACHINE</a></div>
             </header>
             <section>
                 <div class="contents">
@@ -48,9 +26,7 @@
                                 <p id="introduction_text_ch2">이미지를 인식하도록 컴퓨터를<br> 학습시키세요.</p><br>
                                 <p> 머신러닝 모델을 쉽고 빠르게 만들어 보세요. <br>전문지식이나 코딩 능력이 필요하지 않습니다.</p>
                             </div>
-                            <div id="data_introduction_icon">
-                                <img src="../static/image/undraw_data_re_80ws.svg" alt="">
-                            </div>
+                            <div id="data_introduction_icon"><img src="../static/image/undraw_data_re_80ws.svg" alt=""></div>
                         </div>
                     </div>
                     <div id="input_image_text">
@@ -71,26 +47,14 @@
                     </div>
                     <div class="flex1">
                         <div id="result_box">
-                            <h3>결과 값 </h3><br><br>
-                            <p id="ma"></p>
-                            <p id="eum"></p>
-                            <p id="son"></p>
-                            <br>
-                            <p id="toial_max"></p>
+                            <h3>결과 값 </h3><br><br><p id="ma"></p><p id="eum"></p><p id="son"></p><br><p id="toial_max"></p>
                         </div>
                     </div>
-                    <button id="ajaxCall" type="button">호출</button>
-                    <br>
-                    <br>
-                   
+                    <button id="ajaxCall" type="button">호출</button><br><br>
                 </div>
             </section>
-            <footer>
-                <p>KOREA &copy; DATACENTRIC OFFICE IN IMAGE MACHINE LEARNNING PROJECT </p>
-            </footer>
+            <footer><p>KOREA &copy; DATACENTRIC OFFICE IN IMAGE MACHINE LEARNNING PROJECT </p></footer>
         </div>
     </form>
-</body>
-<script src="../static/common.js"></script>
-<script src="{{ url_for('static', filename='common.js') }}" > </script>
+</body><script src="../static/common.js"></script><script src="{{ url_for('static', filename='common.js') }}" > </script>
 </html>
