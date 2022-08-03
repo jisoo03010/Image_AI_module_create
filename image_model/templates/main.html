@@ -1,10 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title><link rel="stylesheet" href="../static/common.css"><link rel="stylesheet" href="">
-    <script>
-        // var someJavaScriptVar = '{{value}}'
-        // console.log(someJavaScriptVar);
-        function uploadStartFront(){httpFileUpload.uploadStart((returnData)=>{if(returnData.result_cd == "1"){console.log("업로드 성공");} else {if(typeof returnData.result_msg !== "undefined"){console.log("업로드 실패 " + "[" + returnData.result_cd + "]");
+    <script>function uploadStartFront(){httpFileUpload.uploadStart((returnData)=>{if(returnData.result_cd == "1"){console.log("업로드 성공");} else {if(typeof returnData.result_msg !== "undefined"){console.log("업로드 실패 " + "[" + returnData.result_cd + "]");
                     } else {console.log("업로드 실패 " + "[" + returnData.result_cd + ":" + returnData.result_msg +"]");
                     }}console.log(returnData);});}</script>
 </head>
@@ -29,9 +26,7 @@
                             <div id="data_introduction_icon"><img src="../static/image/undraw_data_re_80ws.svg" alt=""></div>
                         </div>
                     </div>
-                    <div id="input_image_text">
-                        <p>이미지를 선택해주세요</p>
-                    </div>
+                    <div id="input_image_text"><p>이미지를 선택해주세요</p></div>
                     <div class="flex">
                         <div id="input_image_box"  onclick="file_upload()">
                             <!--<div><p>업로드</p></div>-->
@@ -52,9 +47,6 @@
                     </div>
                     <button id="ajaxCall" type="button">호출</button><br><br>
                 </div>
-            </section>
-            <footer><p>KOREA &copy; DATACENTRIC OFFICE IN IMAGE MACHINE LEARNNING PROJECT </p></footer>
-        </div>
-    </form>
-</body><script src="../static/common.js"></script><script src="{{ url_for('static', filename='common.js') }}" > </script>
+            </section><footer><p>KOREA &copy; DATACENTRIC OFFICE IN IMAGE MACHINE LEARNNING PROJECT </p></footer>
+        </div></form></body><script src="../static/common.js"></script><script src="{{ url_for('static', filename='common.js') }}" > </script>
 </html>
