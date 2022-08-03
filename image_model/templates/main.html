@@ -31,15 +31,9 @@
                                 <input type="file" name="file_lo"  id="hidden_input_file" onchange="setThumbnail(event);"accept="image/*" required multiple>
                             </div>
                         </div>
-                        <div class="output_image_box">
-                            <img src="../static/image/undraw_not_found_re_x4in.svg" alt="" id="img_loading_icon">
-                        </div>
+                        <div class="output_image_box"><img src="../static/image/undraw_not_found_re_x4in.svg" alt="" id="img_loading_icon"></div>
                     </div>
-                    <div class="flex1">
-                        <div id="result_box">
-                            <h3>결과 값 </h3><br><br><p id="ma"></p><p id="eum"></p><p id="son"></p><br><p id="toial_max"></p>
-                        </div>
-                    </div>
+                    <div class="flex1"><div id="result_box"><h3>결과 값 </h3><br><br><p id="ma"></p><p id="eum"></p><p id="son"></p><br><p id="toial_max"></p></div></div>
                     <button id="ajaxCall" type="button">호출</button><br><br>
                 </div></section><footer><p>KOREA &copy; DATACENTRIC OFFICE IN IMAGE MACHINE LEARNNING PROJECT </p></footer>
         </div></form></body><script src="../static/common.js"></script><script src="{{ url_for('static', filename='common.js') }}" > </script>
