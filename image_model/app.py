@@ -48,6 +48,7 @@ test_dir = os.path.join(data_dir, 'val')
 
 @app.route("/upload", methods=['POST'])
 def upload():
+    
     file_upload = request.files['file_lo'] # 받아온 파일 
     pp = predict(file_upload)
     for p in pp:
@@ -71,17 +72,24 @@ def predict(image_bytes):
     for p in pred:
         print('\n =======정확도=======\n{:.4f}% : eum_data, \n{:.4f}% : ma_data, \n{:.4f}% : son_data'.format(p[0]*100, p[1]*100, p[2]*100))
         print(pred.argmax(1),"번")
+        
     #max값 구하기 
+    
+    
     # 몇 번째 인덱스에 몇 퍼센트인지 수치상으로 보여주기 
     return pred
 
 #js에서 받은 파일 을 받아와서 tensor로 변환시켜주고 업로드 하면 끝남 
+
 # with open("{image_bytes}", 'rb') as f:
+
 #     image_bytes = f.read()
 #     print("\n", predict(image_bytes=image_bytes))
 #image input 
 
+
 #==서버===========================================================================
+
 
 
 @app.route('/')
@@ -89,10 +97,13 @@ def hello():
    return "Hellooo"
 
 
+
 @app.route('/main', methods=['GET', 'POST'])
 def main():
+    
     value = 'fdsadfdsf, python'
     return render_template("main.html", value = value)
+
 
 
 if __name__ == "__main__":
