@@ -108,3 +108,21 @@ def main():
 
 if __name__ == "__main__":
     app.run()
+#모델 가져오기
+# model.load_state_dict(torch.load('model.pt'))
+
+# 이미지 나누기 
+# splitfolders.ratio('./static/dataset2/', output="./static/sample_data/", seed=1337, ratio=(0.8, 0.2))
+
+#모델 저장하기 
+# model = torch.save(model.state_dict(), 'model.pt')
+# print(model)
+#모델 가져오기
+# model.load_state_dict(torch.load('model.pt'))
+
+# 이미지 나누기 
+# splitfolders.ratio('./static/dataset2/', output="./static/sample_data/", seed=1337, ratio=(0.8, 0.2))
+
+#모델 저장하기 
+# model = torch.save(model.state_dict(), 'model.pt')
+# print(model)
